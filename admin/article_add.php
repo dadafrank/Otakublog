@@ -17,7 +17,7 @@
 					<div class="icon" id="icon" onclick="iconchange()"></div>
 					<ul class="nav_ul1" id="nav_ul1">
 						<li class="nav_li1" style="border-radius: 2px;" onclick="changeurl(1)"><a href="article_manage.html">&nbsp;文章管理&nbsp;</a></li>
-						<li class="nav_li1 nav_li1_s" onclick="changeurl(2)"><a href="article_add.html" style="color: rgb(52,152,219);">&nbsp;文章发布&nbsp;</a></li>
+						<li class="nav_li1 nav_li1_s" onclick="changeurl(2)"><a href="article_add.php" style="color: rgb(52,152,219);">&nbsp;文章发布&nbsp;</a></li>
 						<li class="nav_li1" onclick="changeurl(3)"><a href="article_mess.html">&nbsp;留言管理&nbsp;</a></li>
 						<li class="nav_li1" onclick="changeurl(4)"><a href="../index.html">&nbsp;返回主页&nbsp;</a></li>
 					</ul>
@@ -48,20 +48,20 @@
 		</script>
 		
 		<section class="section">
-			<form class="section_form">
-				<input type="text" placeholder="请输入标题" />
+			<form class="section_form" method="post" action="article_add.handle.php" enctype="multipart/form-data">
+				<input type="text" placeholder="请输入标题" name="article_title" />
 				<br />
-				<input type="text" placeholder="请输入作者" />
+				<input type="text" placeholder="请输入作者" name="article_author" />
 				<br />
-				<input type="text" placeholder="请输入简介" />
+				<input type="text" placeholder="请输入简介" name="aritcle_disc" />
 				<br />
-				<textarea placeholder="请输入内容"></textarea>
+				<textarea placeholder="请输入内容" name="article_content"></textarea>
 				<br />
 				<div class="file">
 					<span>上传文件</span>
-					<input type="file" class="file_file" />
+					<input type="file" class="file_file" name="article_img" />
 				</div>
-				<input class="sub" type="submit" value="发布文章" />
+				<input class="sub" type="submit" value="发布文章"/>
 			</form>
 		</section>
 	</body>
