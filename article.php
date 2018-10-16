@@ -11,6 +11,13 @@
 		exit;
 	}
 	
+	$message_sql = "select * from new_art_mess where art_id = '$id' order by time desc";
+	$message_query = mysql_query($message_sql);
+	if($message_query&&mysql_num_rows($message_query)){
+		while($message_row = mysql_fetch_assoc($message_query)){
+			$message_data[] = $message_row;
+		}
+	}
 	
 ?>
 <!DOCTYPE html>
@@ -95,21 +102,32 @@
 		
 		
 		<div class="read_mess">
+			<?php
+				if(empty($message_data)){	
+					foreach($message_data as $value){
+						
+					
+			?>
 			<div class="message_body">
-				<h4>大大Frank</h4>
-				<p>•&nbsp;2018-04-16&nbsp;&nbsp;•&nbsp;20:15:56</p>
-				<pre>哇，这个博客真漂亮啊    你不觉得吗？</pre>
+				<h4><?php echo $value['author']?></h4>
+				<p>•&nbsp;<?php echo $value['time']?>&nbsp;&nbsp;</p>
+				<pre><?php echo $value['content']?></pre>
 			</div>
+			<?php
+					}
+				}
+			?>
 		</div>
 		
 		<div class="white_mess">
-			<form action="#" method="post">
-				<textarea placeholder="评论内容" class="mess_content"></textarea>
+			<form action="article_mess.handle.php" method="post">
+				<textarea style="resize:none;" placeholder="评论内容" class="mess_content" name="mess_content"></textarea>
 				<br />
-				<input type="text" placeholder="昵称" class="mess_name" />
+				<input type="text" placeholder="昵称" class="mess_name" name="mess_author"/>
 				<br class="to_phone" />
-				<input type="email" placeholder="邮箱" class="mess_email" />
+				<input type="email" placeholder="邮箱" class="mess_email" name="mess_email" />
 				<br class="to_phone" />
+				<input type="hidden" value="<?php echo $id?>" name="art_id" />
 				<input type="submit" value="提交评论" class="mess_sub" />
 			</form>
 		</div>
