@@ -147,7 +147,7 @@
 		
 		<footer class="blog_foot">
 			<p class="blog_foot_body">
-				<a href="#">管理员</a>|
+				<a href="admin/log_in.php">管理员</a>|
 				<a href="https://www.uisdc.com/">优设</a>|
 				<a href="http://www.ui.cn/">UI中国</a>|
 				<a href="https://diygod.me/">DIYgod</a>
