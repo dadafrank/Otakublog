@@ -1,19 +1,3 @@
-<?php
-	require_once('../connect.php');
-	$article_sql = "select * from new_article order by time desc ";
-	$article_query = mysql_query($article_sql);
-	if($article_query&&mysql_num_rows($article_query)){
-		while($article_row = mysql_fetch_assoc($article_query)){
-			$article_data[]=$article_row;
-		}
-	}
-	
-	$love_sql = "select love from new_other";
-	$love_query = mysql_query($love_sql);
-	while($love_row = mysql_fetch_assoc($love_query)) {
-		$love_data[] = $love_row;
-	}
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,7 +6,7 @@
 		<link rel="icon" href="../img/logo_fox.png" type="image/x-icon"/>
 		<link rel="stylesheet" type="text/css"href="../css/reset.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/admin.header.css"/>
-		<link rel="stylesheet" type="text/css" href="../css/admin.section.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/article_add.css"/>
 		<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
@@ -32,8 +16,8 @@
 				<nav class="header_nav">
 					<div class="icon" id="icon" onclick="iconchange()"></div>
 					<ul class="nav_ul1" id="nav_ul1">
-						<li class="nav_li1" style="border-radius: 2px;" onclick="changeurl(1)"><a href="article_manage.html" style="color: rgb(52,152,219);">&nbsp;文章管理&nbsp;</a></li>
-						<li class="nav_li1 nav_li1_s" onclick="changeurl(2)"><a href="article_add.html">&nbsp;文章发布&nbsp;</a></li>
+						<li class="nav_li1" style="border-radius: 2px;" onclick="changeurl(1)"><a href="article_manage.html">&nbsp;文章管理&nbsp;</a></li>
+						<li class="nav_li1 nav_li1_s" onclick="changeurl(2)"><a href="article_add.html" style="color: rgb(52,152,219);">&nbsp;文章发布&nbsp;</a></li>
 						<li class="nav_li1" onclick="changeurl(3)"><a href="article_mess.html">&nbsp;留言管理&nbsp;</a></li>
 						<li class="nav_li1" onclick="changeurl(4)"><a href="../index.html">&nbsp;返回主页&nbsp;</a></li>
 					</ul>
@@ -63,37 +47,22 @@
 			}
 		</script>
 		
-		<section class="article_section">
-			<div class="article_manage">
-				<?php
-					if(empty($article_data)){
-						echo "当前没有文章";
-					}
-					else{
-						foreach($article_data as $value){
-				?>
-				<div class="article_inf">
-					<p class="article_name">评论功能上线啦</p>
-					<div class="doit">
-						<a href="#">修改</a>
-						<a href="#">删除</a>
-						<a href="#">评论管理</a>
-					</div>
+		<section class="section">
+			<form class="section_form">
+				<input type="text" placeholder="请输入标题" />
+				<br />
+				<input type="text" placeholder="请输入作者" />
+				<br />
+				<input type="text" placeholder="请输入简介" />
+				<br />
+				<textarea placeholder="请输入内容"></textarea>
+				<br />
+				<div class="file">
+					<span>上传文件</span>
+					<input type="file" class="file_file" />
 				</div>
-				<?php
-						}
-					}
-				?>
-			</div>
-			<div class="pv">
-				<div class="pv_inf">
-					<span class="pv_sp1">主页的总pv为:</span><span class="pv_sp2">&nbsp;<?php echo $love_data[0]['love']?></span>
-				</div>
-			</div>
+				<input class="sub" type="submit" value="发布文章" />
+			</form>
 		</section>
-		
-		<footer>
-			
-		</footer>
 	</body>
 </html>
