@@ -102,7 +102,7 @@
 		<div class="read_mess" style="margin-top: 76px;">
 			<div class="message_body">
 				<h4><?php echo $value['author']?></h4>
-				<p>•&nbsp;<?php echo $value['time']?>&nbsp;&nbsp;•&nbsp;20:15:56</p>
+				<p>•&nbsp;<?php echo $value['time']?></p>
 				<pre><?php echo $value['content']?></pre>
 			</div>
 		</div>
@@ -133,7 +133,7 @@
 		
 		<div class="white_mess">
 			<form action="blog_mess.handle.php" method="post">
-				<textarea placeholder="评论内容" name="mess_content" class="mess_content"></textarea>
+				<textarea style="resize:none" placeholder="评论内容" name="mess_content" class="mess_content"></textarea>
 				<br />
 				<input type="text" placeholder="昵称" name="mess_author" class="mess_name" />
 				<br class="to_phone" />

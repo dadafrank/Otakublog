@@ -69,7 +69,10 @@
 }
 .art_body_inf>h3>a {
 	font-size: 24px;
+	color:rgb(57,57,57);
 	font-weight: bold;
+	margin-bottom: 10px;
+	font-family: "等线";
 }
 .art_body_inf>p {
 	font-size: 12px;

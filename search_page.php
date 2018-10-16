@@ -54,7 +54,7 @@
 								<li class="nav_li2" onclick="changeurl(8)"><a href="#">音乐播放器</a></li>
 							</ul>
 						</li>
-						<li class="nav_li1" onclick="changeurl(3)"><a href="#">留言</a></li>
+						<li class="nav_li1" onclick="changeurl(3)"><a href="blog_mess.php">留言</a></li>
 						<li class="nav_li1" onclick="changeurl(4)"><a href="#">关于</a></li>
 						<li class="nav_li1" onclick="changeurl(5)" style="border-radius: 2px;"><a href="#">资助</a></li>
 					</ul>
@@ -85,7 +85,7 @@
 							else {
 								nav_ul2.style.display="none";
 							};break;//项目
-					case 3:location.href="#";break;//留言
+					case 3:location.href="blog_mess.php";break;//留言
 					case 4:location.href="#";break;//关于
 					case 5:location.href="#";break;//资助
 					case 6:location.href="http://www.baidu.com";break;//百度
@@ -173,7 +173,7 @@
 						?>
 						<div class="message_body">
 							<h4><?php echo $value['author']?></h4>
-							<p>•&nbsp;<?php echo $value['time']?>&nbsp;&nbsp;•&nbsp;20:15:56</p>
+							<p>•&nbsp;<?php echo $value['time']?>&nbsp;&nbsp;</p>
 							<pre><?php echo $value['content']?></pre>
 							
 						</div>

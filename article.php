@@ -1,4 +1,16 @@
 <?php
+	require_once('connect.php');
+	$id = intval($_GET[id]);
+	$sql="select * from new_article where id =$id";
+	$article_query=mysql_query($sql);
+	if($article_query&&mysql_num_rows($article_query)){
+		$row=mysql_fetch_assoc($article_query);
+	}
+	else{
+		echo "这篇文章不存在";
+		exit;
+	}
+	
 	
 ?>
 <!DOCTYPE html>
@@ -33,7 +45,7 @@
 								<li class="nav_li2" onclick="changeurl(8)"><a href="#">音乐播放器</a></li>
 							</ul>
 						</li>
-						<li class="nav_li1" onclick="changeurl(3)"><a href="#">留言</a></li>
+						<li class="nav_li1" onclick="changeurl(3)"><a href="blog_mess.php">留言</a></li>
 						<li class="nav_li1" onclick="changeurl(4)"><a href="#">关于</a></li>
 						<li class="nav_li1" onclick="changeurl(5)" style="border-radius: 2px;"><a href="#">帮助</a></li>
 					</ul>
@@ -64,7 +76,7 @@
 							else {
 								nav_ul2.style.display="none";
 							};break;//项目
-					case 3:location.href="#";break;//留言
+					case 3:location.href="blog_mess.php";break;//留言
 					case 4:location.href="#";break;//关于
 					case 5:location.href="#";break;//资助
 					case 6:location.href="http://www.baidu.com";break;//百度
@@ -76,18 +88,9 @@
 		
 		
 		<div class="page_artilce">
-			<h2>评论功能上线啦</h2>
-			<p>•&nbsp;&nbsp;2018-04-18&nbsp;&nbsp;15:04:32&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;大大Frank&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;3次评论</p>
-			<pre>这几天一直在尝试各种方法让文章显示空格和换行。
-    之前在后台发布文章和修改文章的时候，空格都可以读取出来，但是一到前台查看文章的时候空格就不见了，而且一个空格也没有，然后我就去数据库看了一下，空格和换行都在，但就是前台读取不出来。
-    然后我就百度，看到一个htmlspecialchars()函数，这个函数可以把一些符号如"&"变成"&-amp(因为读取出来就变成前面的符号了，所以我多加了一个字符)"，但是我不确定能不能吧空格变成"&-nbsp"，然后我就做了实验，发现数据库没看到空格的符号，前台也读取不出来。
-    然后我就想为什么后台文章修改的时候可以看到空格和换行，用的是"input"标签，所以我就想有没有类似的标签，突然想到前段时间看到的一个"pre"标签，"pre"标签是可以把所以的空格和换行都读取出来的标签，然后我就改了前台的标签，发现可以了。
-    所以这就是那个小技巧了，就是用"pre"标签来装文章的内容，这样就可以读取出来啦。
-    
-    但是，我又发现了一个问题，当单行文字过多时，pre是不会自动换行的，给了固定的宽度也还是不会换行，会出现一个滚动条，显得特别的丑，所以，我又去百度了一下，看到有个word-space属性，但是不太会用，所以我先直接把代码考下来直接用试试看，发现可以用的，但是代码下面申明说IE6不能兼容，因为我电脑没有IE6，所以不做考虑了（现在应该没多少人用了吧= =）。
-    
-    直接上代码吧。
-    "white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;"</pre>
+			<h2><?php echo $row['title']?></h2>
+			<p>•&nbsp;&nbsp;<?php echo $row['time']?>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;<?php echo $row['author']?>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;3次评论</p>
+			<pre><?php echo $row['content']?></pre>
 		</div>
 		
 		
