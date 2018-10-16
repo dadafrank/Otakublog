@@ -118,7 +118,7 @@
 							echo "当前没有文章";
 						}
 						else{
-							for($i=($pages-1)*5+1;$i<$pages*5&&$i<count($article_data);$i=$i+1){
+							for($i=($pages-1)*5;$i<$pages*5&&$i<count($article_data);$i=$i+1){
 								$value = $article_data[$i];
 							// foreach($article_data as $value){
 								

@@ -111,7 +111,7 @@
 							foreach($article_data as $value){
 					?>
 					<div class="article_body">
-						<div class="art_body_img"></div>
+						<div class="art_body_img" style="background-image:url(<?php echo $value['url'] ?>)"></div>
 						<div class="art_body_inf">
 							<h3><?php echo $value['title']?></h3>
 							<p>•&nbsp;&nbsp;<?php echo $value['author']?>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;<?php echo $value['time']?>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;3次评论</p>
@@ -127,6 +127,30 @@
 					<form class="search" id="search_form" >
 						<input type="text" name="key" id="search_input" placeholder="请输入您想要搜索的文章标题关键字" />
 					</form>
+					<script>
+						window.onload = function heartchange() {
+							if(love.getItem("num")!=null) {
+								var love_pic = document.getElementById("like_me_heart");
+								love_pic.style.backgroundImage="url(img/heartred.png)";
+							}
+						}
+						var love_pic = document.getElementById("like_me_heart");
+						var love = window.localStorage;
+						function addlove () {
+							// var love_num = document.getElementById("love_num").innerHTML;
+							if(love.getItem("num")==null) {
+								//设置有值
+								love.setItem("num",1)
+								// 设置图片
+								love_pic.style.backgroundImage="url(img/heartred.png)";
+								// 设置数据库
+								
+							}
+							else {
+								alert("知道你喜欢我了~不要再点了");
+							}
+						}
+					</script>
 					<div class="about_me">
 						<div class="about_me_img"></div>
 						<h2>Frank</h2>
@@ -134,8 +158,8 @@
 					</div>
 					<div class="like_me">
 						<p>Do you like me?</p>
-						<div class="like_me_heart"></div>
-						<p class="like_me_num"><?php echo $love_data[0]['love']?></p>
+						<div id="like_me_heart" class="like_me_heart" onclick="addlove()"></div>
+						<p id="love_num" class="like_me_num"><?php echo $love_data[0]['love']?></p>
 					</div>
 					<div class="message">
 						<?php

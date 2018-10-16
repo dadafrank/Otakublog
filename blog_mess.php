@@ -96,7 +96,7 @@
 				echo "当前没有留言";
 			}
 			else{
-				for($i=($pages-1)*10+1;$i<$pages*10&&$i<count($message_data);$i=$i+1){
+				for($i=($pages-1)*10;$i<$pages*10&&$i<count($message_data);$i=$i+1){
 					$value = $message_data[$i];
 		?>
 		<div class="read_mess" style="margin-top: 76px;">
@@ -132,12 +132,12 @@
 		</div>
 		
 		<div class="white_mess">
-			<form action="#" method="post">
-				<textarea placeholder="评论内容" class="mess_content"></textarea>
+			<form action="blog_mess.handle.php" method="post">
+				<textarea placeholder="评论内容" name="mess_content" class="mess_content"></textarea>
 				<br />
-				<input type="text" placeholder="昵称" class="mess_name" />
+				<input type="text" placeholder="昵称" name="mess_author" class="mess_name" />
 				<br class="to_phone" />
-				<input type="email" placeholder="邮箱" class="mess_email" />
+				<input type="email" placeholder="邮箱" name="mess_email" class="mess_email" />
 				<br class="to_phone" />
 				<input type="submit" value="提交评论" class="mess_sub" />
 			</form>
