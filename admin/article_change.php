@@ -62,20 +62,20 @@
 		</script>
 		
 		<section class="section">
-			<form class="section_form">
-				<input type="text" placeholder="请输入标题" value="<?php echo $row['title']?>" />
+			<form class="section_form" method="post" action="article_change.handle.php" enctype="multipart/form-data">
+				<input type="text" placeholder="请输入标题" name="article_title" value="<?php echo $row['title']?>" />
 				<br />
-				<input type="text" placeholder="请输入作者" value="<?php echo $row['author']?>" />
+				<input type="text" placeholder="请输入作者" name="article_author" value="<?php echo $row['author']?>" />
 				<br />
-				<input type="text" placeholder="请输入简介" value="<?php echo $row['disc']?>" />
+				<input type="text" placeholder="请输入简介" name="article_disc" value="<?php echo $row['disc']?>" />
 				<br />
-				<textarea placeholder="请输入内容"><?php echo $row['content']?></textarea>
+				<textarea placeholder="请输入内容" name="article_content"><?php echo $row['content']?></textarea>
 				<br />
 				<input type="hidden" name="img_url" value="<?php echo $row['url']?>" />
 				<input type="hidden" name="art_id" value="<?php echo $row['id']?>" />
 				<div class="file">
 					上传图片
-					<input type="file" class="file_file" />
+					<input type="file" name="article_img" class="file_file" />
 				</div>
 				<input class="sub" type="submit" value="修改文章" />
 			</form>
