@@ -17,7 +17,7 @@
 	
 	$pagess = ceil(mysql_num_rows($article_query)/5);
 	
-	$message_sql = "select * from new_message order by time desc limit 10";
+	$message_sql = "select * from new_message order by id desc limit 10";
 	$message_query = mysql_query($message_sql);
 	if($message_query&&mysql_num_rows($message_query)){
 		while($message_row = mysql_fetch_assoc($message_query)){

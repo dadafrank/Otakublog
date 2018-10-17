@@ -96,7 +96,7 @@
 		
 		<div class="page_artilce">
 			<h2><?php echo $row['title']?></h2>
-			<p>•&nbsp;&nbsp;<?php echo $row['time']?>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;<?php echo $row['author']?>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;3次评论</p>
+			<p>•&nbsp;&nbsp;<?php echo $row['time']?>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;<?php echo $row['author']?>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;<?php echo mysql_num_rows($message_query)?>次评论</p>
 			<pre><?php echo $row['content']?></pre>
 		</div>
 		
