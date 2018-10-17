@@ -7,7 +7,7 @@
 	else {
 		$pages = 1;
 	}
-	$article_sql = "select * from new_article order by time desc ";
+	$article_sql = "select * from new_article order by id desc ";
 	$article_query = mysql_query($article_sql);
 	if($article_query&&mysql_num_rows($article_query)){
 		while($article_row = mysql_fetch_assoc($article_query)){
