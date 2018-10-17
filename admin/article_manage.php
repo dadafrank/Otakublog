@@ -32,7 +32,7 @@
 				<nav class="header_nav">
 					<div class="icon" id="icon" onclick="iconchange()"></div>
 					<ul class="nav_ul1" id="nav_ul1">
-						<li class="nav_li1" style="border-radius: 2px;" onclick="changeurl(1)"><a href="article_manage.html" style="color: rgb(52,152,219);">&nbsp;文章管理&nbsp;</a></li>
+						<li class="nav_li1" style="border-radius: 2px;" onclick="changeurl(1)"><a href="article_manage.php" style="color: rgb(52,152,219);">&nbsp;文章管理&nbsp;</a></li>
 						<li class="nav_li1 nav_li1_s" onclick="changeurl(2)"><a href="article_add.php">&nbsp;文章发布&nbsp;</a></li>
 						<li class="nav_li1" onclick="changeurl(3)"><a href="article_mess.html">&nbsp;留言管理&nbsp;</a></li>
 						<li class="nav_li1" onclick="changeurl(4)"><a href="../index.html">&nbsp;返回主页&nbsp;</a></li>
@@ -55,8 +55,8 @@
 			function changeurl(obj){
 				var nav_ul2 =document.getElementById("nav_ul2")
 				switch(obj){
-					case 1:location.href="article_manage.html";break;//文章管理
-					case 2:location.href="article_add.html";break;
+					case 1:location.href="article_manage.php";break;//文章管理
+					case 2:location.href="article_add.php";break;
 					case 3:location.href="article_mess.html";break;//留言
 					default :location.href="../index.html";//主页
 				}
@@ -76,7 +76,7 @@
 					<p class="article_name"><?php echo $value['title'] ?></p>
 					<div class="doit">
 						<a href="article_change.php?id=<?php echo $value['id'] ?>">修改</a>
-						<a href="#">删除</a>
+						<a href="article_delete.handle.php?id=<?php echo $value['id']?>">删除</a>
 						<a href="#">评论管理</a>
 					</div>
 				</div>
