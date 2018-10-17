@@ -103,10 +103,8 @@
 		
 		<div class="read_mess">
 			<?php
-				if(empty($message_data)){	
+				if(!empty($message_data)){	
 					foreach($message_data as $value){
-						
-					
 			?>
 			<div class="message_body">
 				<h4><?php echo $value['author']?></h4>
