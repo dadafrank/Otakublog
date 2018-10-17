@@ -73,9 +73,9 @@
 						foreach($article_data as $value){
 				?>
 				<div class="article_inf">
-					<p class="article_name">评论功能上线啦</p>
+					<p class="article_name"><?php echo $value['title'] ?></p>
 					<div class="doit">
-						<a href="#">修改</a>
+						<a href="article_change.php?id=<?php echo $value['id'] ?>">修改</a>
 						<a href="#">删除</a>
 						<a href="#">评论管理</a>
 					</div>

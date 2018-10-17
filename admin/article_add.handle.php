@@ -7,8 +7,8 @@
 	$time=date("Y-m-d h:i:sa");
 	$num ="";
 	$num = htmlspecialchars(date("Ymdhisa"));
-	$url = htmlspecialchars("upload/".$time.$_FILES["article_img"]["name"]);
-	if(move_uploaded_file($_FILES["article_img"]["tmp_name"],"../upload/".$_FILES["article_img"]["name"])) {
+	$url = htmlspecialchars("upload/".$num.$_FILES["article_img"]["name"]);
+	if(move_uploaded_file($_FILES["article_img"]["tmp_name"],"../upload/".$num.$_FILES["article_img"]["name"])) {
 		$insertsql="insert into new_article(title,author,disc,content,time,url)
 			values('$title','$author','$disc','$content','$time','$url')";
 		
