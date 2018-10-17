@@ -7,9 +7,6 @@
 	if($name==""||$message==""){
 		echo "<script>alert('评论或者姓名不能为空');window.location.href='blog_mess.php'</script>";
 	}
-	else if(!preg_match("/([a-zA-Z0-9])+/",$name)){
-		echo "<script>alert('输入不合法');window.location.href='blog_mess.php'</script>";
-	}
 	else{
 		$insertsql="insert into new_message(author,email,content,time)
 		values('$name','$email','$message','$time')";
