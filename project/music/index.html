@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>MUSIC</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<script type="text/javascript" src="js/jquery-1.11.2.min.js" ></script>
+		<style type="text/css">
+			html,body,#body,.music_body {
+				height: 100%;
+			}
+			.banner_menu {
+				width: 0%;
+				height: 100%;
+				background-color:mediumseagreen;
+				float: left;
+				transition: 0.5s;
+			}
+			.banner_menu ul {
+				width: 90%;
+				margin:0px auto;
+				position: relative;
+				top: 15px;
+				display: none;
+				text-align: center;
+			}
+			.banner_menu ul li {
+				color: white;
+				font-size:16px ;
+				height: 20px;
+				margin-top: 30px;
+				cursor: pointer;
+			}
+			.banner_menu ul li:hover {
+				color: yellow !important;
+			}
+			.music_menu {
+				float: left;
+				height: 100%;
+				width: 100%;
+				transition: 0.5s;
+			}
+			.pics {
+				height: 95%;
+				width: 100%;
+				background-image:url(img/9.jpg);
+				background-position: right bottom;
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+			.board {
+				height: 100%;
+				width: 100%;
+				background-color: rgba(25,25,25,0.6);
+				display: none;
+				position:inherit;
+				right: 0;
+				top: 0;
+				transition:all 1s;
+			}
+			.menu {
+				height: 5%;
+				width: 100%;
+				background-color:white;
+			}
+			#kongjian {
+				width: 730px;
+				margin: 0 auto;
+			}
+			.shangyishou {
+				width: 30px;
+				height:100%;
+				float: left;
+				margin: 0 60px;
+				cursor: pointer;
+			}
+			.bofang {
+				width: 30px;
+				height: 100%;
+				float: left;
+				margin: 0 60px;
+				cursor: pointer;
+			}
+			.xiayishou {
+				width: 30px;
+				height: 100%;
+				float: left;
+				margin: 0 60px;
+				cursor: pointer;
+			}
+			#jindutiao {
+				height: 4px;
+				width: 0%;
+				position:absolute;
+				top: 0;
+				left:0;
+				/*background-color:limegreen;*/
+				background-color: white;
+			}
+			#menu {
+				height: 100%;
+				width: 100px;
+				color: black;
+				margin: 0 20px;
+				float: left;
+				margin-top: 8px;
+				text-align: center;
+				cursor: pointer;
+				font-weight: 700;
+			}
+			#style {
+				/*height: 100%;*/
+				width: 100px;
+				color: black;
+				margin:0 20px;
+				float: left;
+				margin-top: 8px;
+				text-align: center;
+				cursor: pointer;
+				font-weight: 700;
+			}
+			#style_ul {
+				width: 100px;
+				position: absolute;
+				bottom: 30px;
+				text-align: center;
+				display: none;
+				background-color:rgb(225,225,225);
+				border-radius: 10%;
+				z-index: 200;
+			}
+			#style_ul li {
+				font-weight: 400;
+				font-size: 12px;
+				height: 30px;
+				line-height: 30px;
+				color:dimgray;
+			}
+			#style:hover #style_ul {
+				display: block;
+			}
+			#style_ul li:hover {
+				color:darkslategray;
+			}
+			#the_video {
+				height: 100%;
+				margin: 0 auto;
+			}
+		</style>
+		<!--网页加载效果-->
+		<script type="text/javascript">
+			document.onreadystatechange=function(){
+				if(document.readyState=="complete"){
+					$("#the_onload").fadeOut();
+				}
+			}
+		</script>
+		
+		<script type="text/javascript">
+			var music_count=9;
+			var volume_count=1;
+			var style_count=1;
+			var con_music_count=window.localStorage;
+
+			//点击改变音乐
+			function change_music(obj) {
+				var music_audio=document.getElementById("the_music")
+				var music_img=document.getElementsByClassName("pics")
+				var bs=document.getElementById("bofang")
+				switch(obj){
+					case 1:music_audio.src="music/aiqingmeiyougangganghao-lidaimo.mp3";
+						music_audio.autoplay="autoplay";
+						music_img[0].style.backgroundImage="url(img/1.jpg)";
+						bs.src="img/begin.png";
+						music_count=1;
+						change_color(obj);
+						time();
+						con_music_count.setItem("count",1);
+						break;
+					case 2:music_audio.src="music/nijiubuyaoxiangqiwo-jianhongzhan.mp3";
+						music_audio.autoplay="autoplay";
+						music_img[0].style.backgroundImage="url(img/2.jpg)";
+						bs.src="img/begin.png";
+						music_count=2;
+						change_color(obj);
+						time();
+						con_music_count.setItem("count",2);
+						break;
+					case 3:music_audio.src="music/anhaogeyibain-silang.mp3";
+						music_audio.autoplay="autoplay";
+						music_img[0].style.backgroundImage="url(img/3.jpg)";
+						bs.src="img/begin.png";
+						music_count=3;
+						change_color(obj);
+						time();
+						con_music_count.setItem("count",3);
+						break;
+					case 4:music_audio.src="music/ting-silang.mp3";
+						music_audio.autoplay="autoplay";
+						music_img[0].style.backgroundImage="url(img/4.jpg)";
+						bs.src="img/begin.png";
+						music_count=4;
+						change_color(obj);
+						time();
+						con_music_count.setItem("count",4);
+						break;
+					case 5:music_audio.src="music/Bruno Mars - Just the Way You Are.mp3";
+						music_audio.autoplay="autoplay";
+						music_img[0].style.backgroundImage="url(img/5.jpg)";
+						bs.src="img/begin.png";
+						music_count=5;
+						change_color(obj);
+						time();
+						con_music_count.setItem("count",5);
+						break;
+					case 6:music_audio.src="music/I Realy Like You.mp3";
+						music_audio.autoplay="autoplay";
+						music_img[0].style.backgroundImage="url(img/6.jpg)";
+						bs.src="img/begin.png";
+						music_count=6;
+						change_color(obj);
+						time();
+						con_music_count.setItem("count",6);
+						break;
+					case 7:music_audio.src="music/henchuangrenhai.mp3";
+						music_audio.autoplay="autoplay";
+						music_img[0].style.backgroundImage="url(img/7.jpg)";
+						bs.src="img/begin.png";
+						music_count=7;
+						change_color(obj);
+						time();
+						con_music_count.setItem("count",7);
+						break;
+					case 8:music_audio.src="music/zhuzaidiqiushaixiyang.mp3";
+						music_audio.autoplay="autoplay";
+						music_img[0].style.backgroundImage="url(img/8.jpg)";
+						bs.src="img/begin.png";
+						music_count=8;
+						change_color(obj);
+						time();
+						con_music_count.setItem("count",8);
+						break;
+					default :music_audio.src="music/njbyxqw.mp3";
+						music_audio.autoplay="autoplay";
+						music_img[0].style.backgroundImage="url(img/9.jpg)";
+						bs.src="img/begin.png";
+						music_count=9;
+						change_color(obj);
+						time();
+						con_music_count.setItem("count",9);
+						break;
+				}
+			}
+			//点击展开音乐菜单栏
+			function open_banner() {
+				var banner=document.getElementsByClassName("banner_menu")
+				var ul=document.getElementsByClassName("the_ul")
+				var music_menu=document.getElementsByClassName("music_menu")
+				var board=document.getElementsByClassName("board")
+				var a=document.getElementById("menu")
+				banner[0].style.width=20+"%";
+				music_menu[0].style.width=80+"%";
+				board[0].style.display="block";
+			//定时器，让字晚点出现
+				var time=setTimeout(function(){
+					ul[0].style.display="block";
+				},200)
+			}
+			//点击收缩音乐菜单栏
+			function close_banner() {
+				var banner=document.getElementsByClassName("banner_menu")
+				var ul=document.getElementsByClassName("the_ul")
+				var music_menu=document.getElementsByClassName("music_menu")
+				var board=document.getElementsByClassName("board")
+				var a=document.getElementById("menu")
+				ul[0].style.display="none";
+				banner[0].style.width=0;
+				music_menu[0].style.width=100+"%";
+				board[0].style.display="none";
+			}
+			//点击上一首
+			function the_last() {
+				
+				switch(style_count){
+							case 1:if(music_count>1){
+										change_music(music_count-1)
+									}
+									else {
+										change_music(9)
+									};break;
+							case 2:if(music_count>1){
+										change_music(music_count-1)
+									}
+									else {
+										change_music(9)
+									};break;
+							default :music_random(); break;
+						}
+			}
+			//点击下一首
+			function the_next() {
+				switch(style_count){
+							case 1:if(music_count<9){
+										change_music(music_count+1)
+									}
+									else {
+										change_music(1) 
+									};break;
+							case 2:if(music_count<9){
+										change_music(music_count+1)
+									}
+									else {
+										change_music(1) 
+									};break;
+							default :music_random(); break;
+						}
+			}
+			//点击单曲循环
+			function music_loop() {
+				change_music(music_count);
+			}
+			//点击随机播放
+			function music_random() {
+				var random_sum=Math.floor(Math.random()*8)+1;
+				change_music(random_sum);
+			}
+			//点击暂停或者开始
+			function music_bs() {
+				var music=document.getElementById("the_music")
+				var bs=document.getElementById("bofang")
+				if(music.paused){
+					music.play();
+					bs.src="img/begin.png";
+				}
+				else{
+					music.pause();
+					bs.src="img/zanting.png";
+				}
+			}
+			//唱哪首哪首字体就变黄
+			function change_color(obj) {
+				var li=document.getElementsByTagName("li")
+				for(var i=0;i<9;i++){
+					li[i].style.color="white";
+				}
+				li[obj-1].style.color="yellow";
+			}
+			//键盘按下触发的事件
+			document.onkeydown= function showkey(e){
+	            var e = window.event || e;
+	            var key = e.keyCode || e.which;   //此方法为了在firefox中的兼容
+	            if(key==32){ //空格键暂停播放
+	            	music_bs();
+	            }
+	            else if(key==38){ //音量加
+	            	volumeadd();
+	            }
+	            else if(key==40){ //音量减
+	            	volumereduce();
+	            }
+	            else if(key==37){  //快退
+	            	music_left();
+	            }
+	            else if(key==39){ //快退
+	            	music_right()
+	            }
+	            else {
+	            	
+	            }
+	 		}
+			//音乐的当前播放的位置
+			function time() {
+				var jindutiao=document.getElementById("jindutiao")
+				var music=document.getElementById("the_music")
+				var timem=setTimeout(function(){
+					var com=music.duration;
+					var now=music.currentTime;
+					var baifengbi=(now/com)*100;
+					jindutiao.style.width=baifengbi+"%";
+					con_music_count.setItem("time",now);
+					if(baifengbi>=100){
+						switch(style_count){
+							case 1:the_next();break;
+							case 2:music_loop();break;
+							default :music_random(); break;
+						}
+					}
+					else{
+						time();
+					}
+				},500)
+			}
+			//网页加载完成先执行一下当前歌曲播放的时间
+			window.onload=function begin() {
+				time();
+				demo.setItem("first",2);
+				if(con_music_count.getItem("count")==null){
+						change_music(9);
+				}
+				else{
+						change_music(parseInt(con_music_count.getItem("count")));
+				}
+				
+				if(con_music_count.getItem("time")!=null){
+					music_time();
+				}
+				
+				if(con_music_count.getItem("style")!=null){
+					music_style(parseInt(con_music_count.getItem("style")))
+				}
+				else {
+					music_style(1);
+				}
+			}
+			//音量变大
+			function volumeadd() {
+				var music=document.getElementById("the_music")
+				volume_count+=0.1;
+				if(volume_count>1){
+					volume_count=1;
+				}
+				music.volume=volume_count;
+			}
+			//音量变小
+			function volumereduce() {
+				var music=document.getElementById("the_music")
+				volume_count-=0.1;
+				if(volume_count<0){
+					volume_count=0;
+				}
+				music.volume=volume_count;
+			}
+			//快进
+			function music_right() {
+				var now_width=document.getElementById("jindutiao")
+				var music=document.getElementById("the_music")
+				var com=music.duration;
+				var right_time=setTimeout(function(){
+					music.currentTime+=1;
+					time();
+				},50)
+			}
+			//快退
+			function music_left() {
+				var now_width=document.getElementById("jindutiao")
+				var music=document.getElementById("the_music")
+				var com=music.duration;
+				var right_time=setTimeout(function(){
+					music.currentTime-=1;
+					time();
+				},50)
+			}
+			//播放位置
+			function music_time() {
+				var now_width=document.getElementById("jindutiao")
+				var music=document.getElementById("the_music")
+				var com=music.duration;
+				music.currentTime=con_music_count.getItem("time");
+			}
+			//点击切换音乐模式--字幕
+			function music_style(obj) {
+				var style_name=document.getElementById("style_name")
+				switch(obj) {
+					case 1:style_name.innerText="顺序循环";style_count=1;con_music_count.setItem("style",1);break;
+					case 2:style_name.innerText="单曲循环";style_count=2;con_music_count.setItem("style",2);break;
+					default :style_name.innerText="随机播放";style_count=3;con_music_count.setItem("style",3);break;
+				}
+			}
+			//测试是否是第一次进入这个网站
+			var demo=window.localStorage;
+			if(demo.getItem("first")==null){
+				alert("给你介绍一下功能吧~空格键可以控制暂停播放，上下键控制音量，左右键控制快进快退，另外现在支持播放模式的选择，再次刷新网页也能继续之前听的歌曲和时间点，点击MENU查看歌曲目录。移动端加载较慢，请耐心等待，谢谢")
+			}
+		</script>
+	</head>
+	<body>
+		<div id="body">
+			
+			<div class="music_body">
+				<div class="banner_menu">
+					<ul class="the_ul">
+						<li onclick="change_music(1)">李代沫 - 爱情没有刚刚好</li>
+						<li onclick="change_music(2)">简弘亦 - 你就不要想起我</li>
+						<li onclick="change_music(3)">四郎 - 安好各一边</li>
+						<li onclick="change_music(4)">四郎-听</li>
+						<li onclick="change_music(5)">Bruno Mars - Just the Way You Are</li>
+						<li onclick="change_music(6)">I Realy Like You</li>
+						<li onclick="change_music(7)">百里屠伕,四郎 - 横穿人海</li>
+						<li onclick="change_music(8)">朱隽言 - 住在地球晒夕阳</li>
+						<li onclick="change_music(9)" style="color: yellow;">虎二-你就不要想起我</li>
+					</ul>
+				</div>
+				<div class="music_menu">
+					<div class="pics">
+						<div id="jindutiao"></div>
+						<div class="board" onclick="close_banner()"></div>
+					</div>
+					<div class="menu">
+						<audio id="the_music"  ></audio>
+						<div id="kongjian">
+							<div id="menu" onclick="open_banner()">MENU</div>
+							<div class="shangyishou" onclick="the_last()">
+								<img src="img/shangyishou.png" style="height:30px;margin-top: 3px;" />
+							</div>
+							<div class="bofang" onclick="music_bs()">
+								<img id="bofang" src="img/begin.png" style="height: 30px;margin-top: 3px;" />
+							</div>
+							<div class="xiayishou" onclick="the_next()">
+								<img src="img/xiayishou.png" style="height: 30px;margin-top: 3px;" />
+							</div>
+							<div id="style" onclick="close_banner()"><span id="style_name">顺序循环</span>
+								<ul id="style_ul">
+									<li onclick="music_style(1)">顺序循环</li>
+									<li onclick="music_style(2)">单曲循环</li>
+									<li onclick="music_style(3)">随机播放</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

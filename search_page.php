@@ -1,7 +1,7 @@
 <?php
 	require_once('connect.php');
 	$key =$_GET[key];
-	$article_sql = "select * from new_article where title like '%$key%' order by time desc";
+	$article_sql = "select * from new_article where title like '%$key%' order by id desc";
 	$article_query = mysql_query($article_sql);
 	if($article_query&&mysql_num_rows($article_query)){
 		while($article_row = mysql_fetch_assoc($article_query)){
@@ -9,7 +9,7 @@
 		}
 	}
 	
-	$message_sql = "select * from new_message order by time desc limit 10";
+	$message_sql = "select * from new_message order by id desc limit 10";
 	$message_query = mysql_query($message_sql);
 	if($message_query&&mysql_num_rows($message_query)){
 		while($message_row = mysql_fetch_assoc($message_query)){
@@ -51,7 +51,7 @@
 							<ul class="nav_ul2" id="nav_ul2" >
 								<li class="nav_li2" onclick="changeurl(6)"><a href="http://www.baidu.com">百度</a></li>
 								<li class="nav_li2" onclick="changeurl(7)"><a href="#">博客</a></li>
-								<li class="nav_li2" onclick="changeurl(8)"><a href="#">音乐播放器</a></li>
+								<li class="nav_li2" onclick="changeurl(8)"><a href="http://dadafrank.top/project/music/index.html">音乐播放器</a></li>
 							</ul>
 						</li>
 						<li class="nav_li1" onclick="changeurl(3)"><a href="blog_mess.php">留言</a></li>
@@ -90,7 +90,7 @@
 					case 5:location.href="#";break;//资助
 					case 6:location.href="http://www.baidu.com";break;//百度
 					case 7:location.href="http://dadafrank.top";break;//博客
-					default :location.href="http://dadafrank.top/Project/music/index.html";//音乐播放器
+					default :location.href="http://dadafrank.top/project/music/index.html";//音乐播放器
 				}
 			}
 		</script>
@@ -137,19 +137,37 @@
 						var love_pic = document.getElementById("like_me_heart");
 						var love = window.localStorage;
 						function addlove () {
-							// var love_num = document.getElementById("love_num").innerHTML;
+							var xmlhttp;
+							var love_num = document.getElementById("love_num").innerHTML;
 							if(love.getItem("num")==null) {
 								//设置有值
 								love.setItem("num",1)
 								// 设置图片
 								love_pic.style.backgroundImage="url(img/heartred.png)";
 								// 设置数据库
-								
+								if (window.XMLHttpRequest)
+									{// code for IE7+, Firefox, Chrome, Opera, Safari
+									xmlhttp=new XMLHttpRequest();
+									}
+								else
+									{// code for IE6, IE5
+									xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+									}
+								xmlhttp.onreadystatechange=function()
+									{
+									if (xmlhttp.readyState==4 && xmlhttp.status==200)
+										{
+											document.getElementById("love_num").innerHTML=xmlhttp.responseText;
+										}
+									}
+								xmlhttp.open("GET","love_add.handle.php?num="+love_num+"",true);
+								xmlhttp.send();
 							}
 							else {
 								alert("知道你喜欢我了~不要再点了");
 							}
 						}
+// 						
 					</script>
 					<div class="about_me">
 						<div class="about_me_img"></div>

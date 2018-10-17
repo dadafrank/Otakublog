@@ -61,7 +61,7 @@
 							<ul class="nav_ul2" id="nav_ul2" >
 								<li class="nav_li2" onclick="changeurl(6)"><a href="http://www.baidu.com">百度</a></li>
 								<li class="nav_li2" onclick="changeurl(7)"><a href="#">博客</a></li>
-								<li class="nav_li2" onclick="changeurl(8)"><a href="#">音乐播放器</a></li>
+								<li class="nav_li2" onclick="changeurl(8)"><a href="http://dadafrank.top/project/music/index.html">音乐播放器</a></li>
 							</ul>
 						</li>
 						<li class="nav_li1" onclick="changeurl(3)"><a href="blog_mess.php">留言</a></li>
@@ -100,7 +100,7 @@
 					case 5:location.href="#";break;//帮助
 					case 6:location.href="http://www.baidu.com";break;//百度
 					case 7:location.href="http://dadafrank.top";break;//博客
-					default :location.href="http://dadafrank.top/Project/music/index.html";//音乐播放器
+					default :location.href="http://dadafrank.top/project/music/index.html";//音乐播放器
 				}
 			}
 		</script>
