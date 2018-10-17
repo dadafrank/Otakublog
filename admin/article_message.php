@@ -1,5 +1,6 @@
 <?php
 	require_once('../connect.php');
+	$art_id = $_GET['id'];
 	$pages  = 1;
 	if($_GET[pages]) {
 		$pages = intval($_GET[pages]);
@@ -7,7 +8,7 @@
 	else {
 		$pages = 1;
 	}
-	$message_sql = "select * from new_message order by time desc";
+	$message_sql = "select * from new_art_mess where art_id = '$art_id' order by time desc";
 	$message_query = mysql_query($message_sql);
 	if($message_query&&mysql_num_rows($message_query)){
 		while($message_row = mysql_fetch_assoc($message_query)){
@@ -37,7 +38,7 @@
 					<ul class="nav_ul1" id="nav_ul1">
 						<li class="nav_li1" style="border-radius: 2px;" onclick="changeurl(1)"><a href="article_manage.php">&nbsp;文章管理&nbsp;</a></li>
 						<li class="nav_li1 nav_li1_s" onclick="changeurl(2)"><a href="article_add.php">&nbsp;文章发布&nbsp;</a></li>
-						<li class="nav_li1" onclick="changeurl(3)"><a href="article_message.php" style="color: rgb(52,152,219);">&nbsp;留言管理&nbsp;</a></li>
+						<li class="nav_li1" onclick="changeurl(3)"><a href="article_message.php">&nbsp;留言管理&nbsp;</a></li>
 						<li class="nav_li1" onclick="changeurl(4)"><a href="../index.html">&nbsp;返回主页&nbsp;</a></li>
 					</ul>
 				</nav>
@@ -81,7 +82,7 @@
 				<p class="p1"><?php echo $value['author']?></p>
 				<p class="p2"><?php echo $value['email']?></p>
 				<p class="p3"><?php echo $value['time']?></p>
-				<p class="p4"><a href="message.handle.php?id=<?php echo $value['id']?>">删除</a></p>
+				<p class="p4"><a href="article_message.handle.php?id=<?php echo $value['id']?>&&art_id=<?php echo $art_id?>">删除</a></p>
 			</div>
 			<?php
 					}

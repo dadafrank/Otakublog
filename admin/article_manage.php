@@ -77,7 +77,7 @@
 					<div class="doit">
 						<a href="article_change.php?id=<?php echo $value['id'] ?>">修改</a>
 						<a href="article_delete.handle.php?id=<?php echo $value['id']?>">删除</a>
-						<a href="#">评论管理</a>
+						<a href="article_message.php?id=<?php echo $value['id']?>">评论管理</a>
 					</div>
 				</div>
 				<?php
