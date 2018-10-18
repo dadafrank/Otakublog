@@ -1,18 +1,24 @@
 <?php
-	require_once('../connect.php');
-	$article_sql = "select * from new_article order by id desc ";
-	$article_query = mysql_query($article_sql);
-	if($article_query&&mysql_num_rows($article_query)){
-		while($article_row = mysql_fetch_assoc($article_query)){
-			$article_data[]=$article_row;
+	if($_COOKIE["user"]!="frank") {
+		echo "<script>alert('请返回登录');window.location.href='log_in.php'</script>";
+	}
+	else {
+		require_once('../connect.php');
+		$article_sql = "select * from new_article order by id desc ";
+		$article_query = mysql_query($article_sql);
+		if($article_query&&mysql_num_rows($article_query)){
+			while($article_row = mysql_fetch_assoc($article_query)){
+				$article_data[]=$article_row;
+			}
+		}
+		
+		$love_sql = "select love from new_other";
+		$love_query = mysql_query($love_sql);
+		while($love_row = mysql_fetch_assoc($love_query)) {
+			$love_data[] = $love_row;
 		}
 	}
 	
-	$love_sql = "select love from new_other";
-	$love_query = mysql_query($love_sql);
-	while($love_row = mysql_fetch_assoc($love_query)) {
-		$love_data[] = $love_row;
-	}
 ?>
 <!DOCTYPE html>
 <html>

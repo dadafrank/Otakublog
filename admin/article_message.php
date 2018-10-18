@@ -1,21 +1,27 @@
 <?php
-	require_once('../connect.php');
-	$art_id = $_GET['id'];
-	$pages  = 1;
-	if($_GET[pages]) {
-		$pages = intval($_GET[pages]);
+	if($_COOKIE["user"]!="frank") {
+		echo "<script>alert('请返回登录');window.location.href='log_in.php'</script>";
 	}
 	else {
-		$pages = 1;
-	}
-	$message_sql = "select * from new_art_mess where art_id = '$art_id' order by time desc";
-	$message_query = mysql_query($message_sql);
-	if($message_query&&mysql_num_rows($message_query)){
-		while($message_row = mysql_fetch_assoc($message_query)){
-			$message_data[] = $message_row;
+		require_once('../connect.php');
+		$art_id = $_GET['id'];
+		$pages  = 1;
+		if($_GET[pages]) {
+			$pages = intval($_GET[pages]);
 		}
+		else {
+			$pages = 1;
+		}
+		$message_sql = "select * from new_art_mess where art_id = '$art_id' order by time desc";
+		$message_query = mysql_query($message_sql);
+		if($message_query&&mysql_num_rows($message_query)){
+			while($message_row = mysql_fetch_assoc($message_query)){
+				$message_data[] = $message_row;
+			}
+		}
+		$pagess = ceil(mysql_num_rows($message_query)/50);
 	}
-	$pagess = ceil(mysql_num_rows($message_query)/50);
+	
 ?>
 <!DOCTYPE html>
 <html>

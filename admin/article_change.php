@@ -1,16 +1,22 @@
 <?php
-	require_once('../connect.php');
-	$id = $_GET["id"];
-	$sql = "select * from new_article where id = $id";
-	$article_data = mysql_query($sql);
+	if($_COOKIE["user"]!="frank") {
+		echo "<script>alert('请返回登录');window.location.href='log_in.php'</script>";
+	}
+	else {
+		require_once('../connect.php');
+		$id = $_GET["id"];
+		$sql = "select * from new_article where id = $id";
+		$article_data = mysql_query($sql);
+		
+		if($article_data&&mysql_num_rows($article_data)){
+			$row=mysql_fetch_assoc($article_data);
+		}
+		else{
+			echo "这篇文章不存在";
+			exit;
+		}
+	}
 	
-	if($article_data&&mysql_num_rows($article_data)){
-		$row=mysql_fetch_assoc($article_data);
-	}
-	else{
-		echo "这篇文章不存在";
-		exit;
-	}
 ?>
 <!DOCTYPE html>
 <html>
