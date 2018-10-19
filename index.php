@@ -204,7 +204,7 @@
 											document.getElementById("love_num").innerHTML=xmlhttp.responseText;
 										}
 									}
-								xmlhttp.open("GET","love_add.handle.php?num="+love_num,true);
+								xmlhttp.open("GET","love_add.handle.php,true);
 								xmlhttp.send();
 							}
 							else {
