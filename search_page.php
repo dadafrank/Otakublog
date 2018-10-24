@@ -111,11 +111,11 @@
 							foreach($article_data as $value){
 					?>
 					<div class="article_body">
-						<div class="art_body_img" style="background-image:url(<?php echo $value['url'] ?>)"></div>
+						<a href="article.php?id=<?php echo $value['id']?>"><div class="art_body_img" style="background-image:url(<?php echo $value['url'] ?>)"></div><a>
 						<div class="art_body_inf">
-							<h3><?php echo $value['title']?></h3>
-							<p>•&nbsp;&nbsp;<?php echo $value['author']?>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;<?php echo $value['time']?>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;3次评论</p>
-							<pre><?php echo $value['disc']?></pre>
+							<h3><a style="color:black" href="article.php?id=<?php echo $value['id']?>"><?php echo $value['title'] ?></a></h3>
+							<p>•&nbsp;&nbsp;<?php echo $value['author']?>&nbsp;&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;<?php echo $value['time']?>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+							<pre><?php echo $value['disc'] ?></pre>
 						</div>
 					</div>
 					<?php
