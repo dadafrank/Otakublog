@@ -7,9 +7,17 @@
 			$id = $_POST["art_id"];
 			$url = $_POST["img_url"];
 			$title = $_POST['article_title'];
+			$title=str_replace("'","\'",$title);
+			$title=str_replace("\"","\"",$title);
 			$author = $_POST['article_author'];
-			$disc = $_POST['article_disc'];
-			$content = $_POST['article_content'];
+			$author=str_replace("'","\'",$author);
+			$author=str_replace("\"","\"",$author);
+			$disc = htmlspecialchars($_POST['article_disc']);
+			$disc=str_replace("'","\'",$disc);
+			$disc=str_replace("\"","\"",$disc);
+			$content =htmlspecialchars($_POST['article_content']) ;
+			$content=str_replace("'","\'",$content);
+			$content=str_replace("\"","\"",$content);
 			// 用来图片的名字
 			$num ="";
 			$num = htmlspecialchars(date("Ymdhisa"));

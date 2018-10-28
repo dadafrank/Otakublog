@@ -4,10 +4,18 @@
 	}
 	else {
 		require_once('../connect.php');
-		$title=$_POST[article_title];
-		$author = $_POST[article_author];
-		$disc= $_POST[article_disc];
+		$title=htmlspecialchars($_POST[article_title]);
+		$title=str_replace("'","\'",$title);
+		$title=str_replace("\"","\"",$title);
+		$author = htmlspecialchars($_POST[article_author]);
+		$author=str_replace("'","\'",$author);
+		$author=str_replace("\"","\"",$author);
+		$disc= htmlspecialchars($_POST[article_disc]);
+		$disc=str_replace("'","\'",$disc);
+		$disc=str_replace("\"","\"",$disc);
 		$content = htmlspecialchars($_POST[article_content]);
+		$content=str_replace("'","\'",$content);
+		$content=str_replace("\"","\"",$content);
 		$time=date("Y-m-d h:i:sa");
 		$num ="";
 		$num = htmlspecialchars(date("Ymdhisa"));
